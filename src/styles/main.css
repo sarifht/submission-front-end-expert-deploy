@@ -1,0 +1,430 @@
+/* Sarif Hidayatullah */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-size: 12px;
+  color: #343f56;
+  font-family: "Nunito", sans-serif;
+}
+a {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Menu Mobile */
+.menumob {
+  background-color: #c2410c;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 3px;
+  color: #f5e6ca !important;
+  border-bottom: 2px solid #343f56;
+}
+.navmob {
+  background-color: #c2410c;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+}
+.navlistmob {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.navitemsmob {
+  box-sizing: border-box;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+.navitemsmob a:hover {
+  color: #f5e6ca !important;
+}
+.iconmenu {
+  padding: 20px;
+  font-size: 30px;
+  background-color: #c2410c;
+  border: none;
+  color: #f5e6ca !important;
+}
+.navmob a {
+  padding: 2em;
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Nav Desktop */
+.nav {
+  background-color: #c2410c;
+  display: flex;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.navlist {
+  padding: 0;
+  margin: 0;
+  width: 70%;
+  text-align: right;
+}
+.logo {
+  padding: 0;
+  margin: 0;
+  width: 25%;
+  line-height: 24px;
+  text-align: center;
+  box-sizing: border-box;
+  display: inline-block;
+  color: #f5e6ca;
+  text-decoration: none !important;
+}
+.navitems {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: right;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.navitems a {
+  position: relative;
+  color: #64748b;
+  text-decoration: none;
+}
+
+.navitems a:hover {
+  color: #f5e6ca !important;
+}
+.navitems a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f5e6ca;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.navitems a:hover::before {
+  transform: scaleX(1);
+}
+.nav a {
+  display: inline-block;
+  padding: 1.3em;
+}
+
+/* Hero Image */
+.hero {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  min-height: 450px;
+  width: 100%;
+  background-position: center;
+  background-image: linear-gradient(rgba(0, 0, 20, 0.5), rgba(0, 0, 20, 0.5)), url("../public/images/hero-image.jpg");
+  background-color: Black !important;
+}
+.hero_text {
+  margin: 0 auto;
+  max-width: 800px;
+  color: #f5e6ca;
+}
+.herotitle {
+  font-weight: 600;
+  font-size: 36px;
+  text-shadow: 1px 1px #141414;
+}
+.herosubtitle {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 1px 1px #141414;
+}
+
+/* Content */
+main {
+  width: 100%;
+  margin: 0 auto;
+}
+.content {
+  padding: 60px;
+}
+.select {
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.select h1 {
+  font-weight: 700;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+.detail-nama {
+  padding: 13px 8px;
+}
+.judul-menu {
+  padding-bottom: 5px;
+  margin-top: 10px;
+  color: #c2410c;
+  text-align: center;
+}
+.judul-detail {
+  padding-bottom: 5px;
+  margin-top: 10px;
+  color: #c2410c;
+}
+
+/* List Item */
+.list {
+  text-align: left;
+  display: grid;
+  margin: 32px auto auto;
+  grid-row-gap: 16px;
+}
+.list_item {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  border: #343f56 solid 0.1px;
+  box-shadow: 0 2px 4px 0 #343f56;
+}
+.rating {
+  top: 8px;
+  left: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  position: absolute;
+  padding: 5px 10px 5px;
+  background-color: #c2410c;
+  color: #f5e6ca;
+  text-align: left;
+}
+.list_item_content {
+  padding: 20px;
+}
+.list_item_thumb {
+  width: 100%;
+  max-height: 200px;
+}
+.list_item_city {
+  text-align: right;
+  font-size: 12px;
+  margin: -8px -4px;
+  text-transform: uppercase;
+}
+.list_item_city_value {
+  color: rgb(248, 99, 0);
+  text-decoration: none;
+  padding: 15px 25px;
+}
+.list_item_title {
+  transition: 0.3s opacity;
+  margin-top: 16px;
+}
+.list_item_title:hover {
+  opacity: 0.5;
+  color: #c2410c;
+}
+.list_item_title a {
+  margin: 20px 0 20px -20px;
+  padding: 13px 18px;
+  text-decoration: none;
+  color: inherit;
+}
+.list_item_desc {
+  font-size: 12px;
+  margin-top: -20px;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+/* Favorite */
+.like {
+  font-size: 18px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #db0000;
+  color: white;
+  border: 0;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.favorite-kosong {
+  font-size: 26px;
+  background-color: rgba(252, 172, 61, 0.418);
+  padding: 30% 0;
+  margin: 10px 15px;
+  border-radius: 10px;
+  color: #343f56;
+  transition: 0.3s ease-in-out;
+}
+.favorite-kosong i {
+  font-size: 60px;
+  display: flexbox;
+  margin: auto 25px;
+}
+
+/*
+    Detail List Restaurant
+*/
+.grid-detail {
+  font-size: 20px;
+  display: grid;
+  padding: 2em 4em 0em 4em;
+  justify-content: center;
+  align-items: center;
+}
+.detail-img {
+  border: 8px solid gray;
+  width: 100%;
+  margin: 1em;
+  border-radius: 2em;
+}
+.detail-info {
+  margin: -1em 2em 2em 2em;
+}
+.grid-city-rating {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+}
+.city-detail {
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background-color: rgba(252, 172, 61, 0.418);
+  width: fit-content;
+  border-radius: 1em;
+}
+.rating-detail {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  padding: 0.5em 1em;
+  margin: 1em;
+  background-color: rgba(252, 172, 61, 0.418);
+  border-radius: 2em;
+}
+.p-rating-detail {
+  margin: 0 0.5em;
+  font-weight: 600;
+  color: #7d7d7d;
+  font-size: 12px;
+}
+.flex-category {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 1em 0;
+}
+.categorie-restaurant {
+  background-color: #c2410c;
+  color: #f5e6ca;
+  padding: 0.5em 1.25em;
+  margin: 0 0.25em;
+  border-radius: 1.5em;
+}
+.p-category {
+  margin: 0.25em 0.5em;
+  font-weight: 500;
+  font-size: 12px;
+}
+.p-padding {
+  padding: 0.5em 0;
+  margin-bottom: 0.5em;
+  text-align: justify;
+}
+.list-menu {
+  background-color: rgba(252, 172, 61, 0.418);
+  padding: 25px;
+  border-radius: 25px;
+  color: #343f56;
+  transition: 0.3s ease-in-out;
+}
+.desc-pad {
+  padding: 0 7em;
+  margin-top: -12px;
+  font-size: 20px;
+}
+.fav-resto {
+  text-align: center;
+  align-items: center;
+  color: #7d7d7d;
+}
+
+/* Reviews */
+.restaurant-reviews {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 100%;
+  margin-bottom: 14px;
+  justify-content: center;
+  align-items: center;
+}
+.grid-review {
+  background-color: rgba(252, 172, 61, 0.418);
+  border-radius: 0.5em;
+}
+.review-review {
+  padding: 8px;
+}
+
+/* Skip Link */
+.skip-link {
+  font-size: 20px;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background-color: #c2410c;
+  color: rgba(255, 255, 255, 0.918);
+  padding: 10px;
+  z-index: 100;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 150px;
+}
+
+/* Footer */
+footer {
+  color: #f5e6ca;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  padding: 2em;
+  background-color: #c2410c;
+}
+footer p {
+  padding: 12px;
+}
+footer .info {
+  text-decoration: none;
+  padding: 20px;
+}

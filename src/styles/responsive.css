@@ -1,0 +1,95 @@
+/* Sarif Hidayatullah  */
+@media screen and (min-width: 500px) {
+  .menumob {
+    display: none;
+  }
+  .navmob {
+    display: none;
+  }
+}
+@media screen and (max-width: 499px) {
+  .nav {
+    display: none;
+  }
+  .navmob {
+    z-index: 10;
+    background-color: #fb9300;
+    width: 100%;
+    position: absolute;
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+    transition: transform 0.3s ease;
+  }
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 20, 0.5), rgba(0, 0, 20, 0.5)), url("../public/images/hero-image-small.jpg");
+  }
+  .open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  .navitemsmob {
+    display: list-item;
+    color: #343f56 !important;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #343f56;
+  }
+
+  /*
+		Detail List Restaurant
+	*/
+  .grid-detail {
+    display: grid;
+    font-size: 16px;
+    padding: 5em 0 1em 1em;
+    justify-content: center;
+    align-items: center;
+  }
+  .detail-img {
+    width: 92%;
+    object-fit: cover;
+    margin-top: -35px;
+  }
+  .desc-pad {
+    padding: 0 2em;
+    font-size: 16px;
+  }
+  /* Reviews */
+  .restaurant-reviews {
+    padding: 0;
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (min-width: 650px) {
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 20, 0.5), rgba(0, 0, 20, 0.5)), url("../public/images/hero-image-small.jpg");
+  }
+  .list_item_content {
+    padding: 16px 32px 32px 32px;
+  }
+  .list_item_title {
+    font-size: 18px;
+  }
+  .list_item_desc {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 16px;
+  }
+}
+@media screen and (min-width: 900px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1200px) {
+  main {
+    max-width: 1200px;
+  }
+}
