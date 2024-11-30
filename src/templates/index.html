@@ -46,7 +46,17 @@
     </nav>
 
     <!-- Content -->
-    <main id="mainContent" tabindex="0"></main>
+    <main id="mainContent" tabindex="0">
+      <section class="hero">
+        <picture>
+          <source type="image/webp" media="(max-width: 600px)" srcset="images/heros/hero-image_1-small.webp" />
+          <source type="image/webp" media="(min-width: 601px)" srcset="images/heros/hero-image_1-large.webp" />
+          <source media="(max-width: 600px)" srcset="images/heros/hero-image_1-small.jpg" />
+          <source media="(min-width: 601px)" srcset="images/heros/hero-image_1-large.jpg" />
+          <img src="images/heros/hero-image_1-large.webp" alt="Hero Image" width="1200" height="800" />
+        </picture>
+      </section>
+    </main>
 
     <!-- Footer-->
     <footer class="footer">
