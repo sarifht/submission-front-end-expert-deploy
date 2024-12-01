@@ -10,7 +10,7 @@ module.exports = function (config) {
     frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
-    files: ["tests/**/*Spec.js"],
+    files: ["specs/**/*specs.js"],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -18,7 +18,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "tests/**/*Spec.js": ["webpack", "sourcemap"],
+      "specs/**/*Spec.js": ["webpack", "sourcemap"],
     },
 
     webpack: {
@@ -52,7 +52,7 @@ module.exports = function (config) {
         || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG */
     logLevel: config.LOG_INFO,
 
-    // enable / disable watching file and executing tests whenever any file changes
+    // enable / disable watching file and executing spec whenever any file changes
     autoWatch: true,
 
     // start these browsers
