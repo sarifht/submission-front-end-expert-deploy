@@ -21,5 +21,5 @@ exports.config = {
   include: {
     I: "./steps_file.js",
   },
-  name: "Submission Expert 2 Restaurant",
+  name: "Submission Expert 3 Restaurant",
 };
