@@ -1,5 +1,5 @@
 import FavoriteRestaurantIdb from "../src/scripts/data/favoriteresto-idb";
-import FavoriteButtonInitiator from "../src/scripts/utils/like-button-initiator";
+import FavoriteButtonInitiator from "../src/scripts/utils/favorite-button-initiator";
 
 /**
  * Skenario positif batal menyukai restoran:
