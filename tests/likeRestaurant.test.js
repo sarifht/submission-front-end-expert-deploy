@@ -1,5 +1,5 @@
-import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
-import FavoriteButtonInitiator from '../src/scripts/utils/favorite-button-initiator';
+import FavoriteRestaurantIdb from '../src/scripts/data/favoriteresto-idb';
+import FavoriteButtonInitiator from '../src/scripts/utils/like-button-initiator';
 
 /**
  * Skenario positif menyukai restoran:
@@ -28,25 +28,19 @@ describe('Liking A Restaurant', () => {
 
   it('should show the favorite button when the restaurant has not been liked before', async () => {
     await FavoriteButtonInitiator.init({
-      favoriteButtonContainer: document.querySelector(
-        '#favoriteButtonContainer'
-      ),
+      favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
       restaurant: {
         id: 1,
         name: 'A Restaurant',
       },
     });
 
-    expect(
-      document.querySelector('[aria-label="favorite this restaurant"]')
-    ).toBeTruthy();
+    expect(document.querySelector('[aria-label="favorite this restaurant"]')).toBeTruthy();
   });
 
   it('should be able to like the restaurant', async () => {
     await FavoriteButtonInitiator.init({
-      favoriteButtonContainer: document.querySelector(
-        '#favoriteButtonContainer'
-      ),
+      favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
       restaurant: {
         id: 1,
         name: 'A Restaurant',
@@ -61,9 +55,7 @@ describe('Liking A Restaurant', () => {
 
   it('should not add a restaurant again when it is already liked', async () => {
     await FavoriteButtonInitiator.init({
-      favoriteButtonContainer: document.querySelector(
-        '#favoriteButtonContainer'
-      ),
+      favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
       restaurant: {
         id: 1,
         name: 'A Restaurant',
@@ -73,16 +65,12 @@ describe('Liking A Restaurant', () => {
     await FavoriteRestaurantIdb.putRestaurant({ id: 1, name: 'A Restaurant' });
     document.querySelector('#favoriteButton').dispatchEvent(new Event('click'));
 
-    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([
-      { id: 1, name: 'A Restaurant' },
-    ]);
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1, name: 'A Restaurant' }]);
   });
 
   it('should not add a restaurant when it has no id', async () => {
     await FavoriteButtonInitiator.init({
-      favoriteButtonContainer: document.querySelector(
-        '#favoriteButtonContainer'
-      ),
+      favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
       restaurant: {},
     });
 

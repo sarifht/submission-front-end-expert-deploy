@@ -1,4 +1,4 @@
-import CONFIG from "../../globals/config";
+import CONFIG from '../../globals/config';
 
 const createJumbotron = `
   <div class="hero" alt="Jumbotron">
@@ -32,35 +32,35 @@ const createRestoDetailTemplate = (resto) => `
       <h4>Category:</h4>
       <div class="p-category">
         ${resto.restaurant.categories
-          .map(
-            (categorie) => `
+    .map(
+      (categorie) => `
             <span tabindex="0" class="categorie-restaurant">${categorie.name}</span>
-          `
-          )
-          .join("")}
+          `,
+    )
+    .join('')}
       </div>
     </div>
 
     <h2 class="judul-menu" tabindex="0">Food Menus:</h2>
     <div class="list-menu">
     ${resto.restaurant.menus.foods
-      .map(
-        (food) => `
+    .map(
+      (food) => `
       <li>${food.name}</li>
-        `
-      )
-      .join("")}
+        `,
+    )
+    .join('')}
       </div>
     
       <h2 class="judul-menu" tabindex="0">Drink Menus:</h2>
       <div class="list-menu">
         ${resto.restaurant.menus.drinks
-          .map(
-            (drink) => `
+    .map(
+      (drink) => `
         <li>${drink.name}</li>
-        `
-          )
-          .join("")}
+        `,
+    )
+    .join('')}
     </div>
   </div>
 </div>
@@ -71,8 +71,8 @@ const createRestoDetailTemplate = (resto) => `
   <h2 class="judul-detail" tabindex="0">Reviews:</h2>
   <div class="restaurant-reviews">
     ${resto.restaurant.customerReviews
-      .map(
-        (review) => `
+    .map(
+      (review) => `
       <div class="grid-review">
         <div class="review-review">
           <p tabindex="0">${review.name}</p>
@@ -82,16 +82,16 @@ const createRestoDetailTemplate = (resto) => `
           <p tabindex="0" class="p-review">${review.review}</p>
         </div>
       </div>
-    `
-      )
-      .join("")}
+    `,
+    )
+    .join('')}
   </div>
 </div>
 `;
 
 const createRestoItemTemplate = (resto) => `
 <div class="list_item">
-  <img class="list_item_thumb" src="${resto.pictureId ? CONFIG.BASE_IMAGE_URL + resto.pictureId : "https://picsum.photos/id/666/800/450?grayscale"}" alt="${resto.name}" title="${resto.name}">
+  <img class="list_item_thumb" src="${resto.pictureId ? CONFIG.BASE_IMAGE_URL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${resto.name}" title="${resto.name}">
     <div tabindex="0" aria-label="rating" class="rating"><i class="fas fa-star"></i> ${resto.rating}</div>
     <div class="list_item_content">
       <p class="list_item_city">
@@ -122,4 +122,6 @@ const emptyFavorit = `
   </div>
 `;
 
-export { createRestoItemTemplate, createRestoDetailTemplate, createJumbotron, createLikeButtonTemplate, createLikedButtonTemplate, emptyFavorit };
+export {
+  createRestoItemTemplate, createRestoDetailTemplate, createJumbotron, createLikeButtonTemplate, createLikedButtonTemplate, emptyFavorit,
+};

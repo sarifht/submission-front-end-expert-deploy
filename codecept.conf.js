@@ -12,10 +12,9 @@ exports.config = {
   tests: 'e2e/**/*.spec.js',
   output: 'e2e/outputs',
   helpers: {
-    Puppeteer: {
-      url: 'http://127.0.0.1:9008',
+    Playwright: {
+      url: 'http://127.0.0.1:4444',
       show: true,
-      windowSize: '1200x900',
     },
   },
   include: {
