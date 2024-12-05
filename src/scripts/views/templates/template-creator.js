@@ -18,15 +18,15 @@ const createRestaurantDetailTemplate = (restaurant) => `
       <p tabindex="0">City: ${restaurant.city}</p>
       <p tabindex="0">Description: ${restaurant.description}</p>
     </div>
-    <h3 tabindex="0">🍝 Food Menu 🥘</h3>
+    <h3 tabindex="0">Menu Makanan</h3>
     <div class="food-menu">
       ${restaurant.menus.foods.map((food) => `<div class="food-card" tabindex="0"><p>${food.name}</p></div>`).join("")}
     </div>
-    <h3 tabindex="0">☕ Drink Menu🍹</h3>
+    <h3 tabindex="0">Menu Minuman</h3>
     <div class="drink-menu">
       ${restaurant.menus.drinks.map((drink) => `<div class="drink-card" tabindex="0"><p>${drink.name}</p></div>`).join("")}
     </div>
-    <h3 tabindex="0">Customer Reviews</h3>
+    <h3 tabindex="0">Ulasan Pengunjung</h3>
     <div class="review-form">
       <h4 tabindex="0">Add Your Review</h4>
       <form id="reviewForm">

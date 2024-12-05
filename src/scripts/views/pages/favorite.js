@@ -3,13 +3,13 @@ import { createRestaurantItemTemplate } from "../../views/templates/template-cre
 const Favorite = {
   async render() {
     return `
-      <h2 class="title">Restoran Favorit</h2>
+      <h2 class="title">Your Favorite Restaurants</h2>
       <section class="restaurant-list" id="favoriteRestaurantList" tabindex="-1"></section>
     `;
   },
 
   async afterRender() {
-    const FavoriteRestaurantIdb = (await import(/* webpackChunkName: "favorite-restaurant-idb" */ "../../data/favorite-restaurant-idb")).default;
+    const FavoriteRestaurantIdb = (await import(/* webpackChunkName: "favoriteresto-idb" */ "../../data/favoriteresto-idb")).default;
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
     const favoriteRestaurantList = document.querySelector("#favoriteRestaurantList");
     const skipLink = document.querySelector("#skipToContentLink");
@@ -44,7 +44,7 @@ const Favorite = {
     if (restaurants.length === 0) {
       favoriteRestaurantList.innerHTML = `
         <div class="empty-favorite-message" tabindex="0">
-         Kamu belum punya restoran favorit.
+          You don't have any favorite restaurants yet
         </div>
       `;
     } else {
