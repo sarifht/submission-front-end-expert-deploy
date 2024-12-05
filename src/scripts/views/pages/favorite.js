@@ -3,7 +3,7 @@ import { createRestaurantItemTemplate } from "../../views/templates/template-cre
 const Favorite = {
   async render() {
     return `
-      <h2 class="title">Your Favorite Restaurants</h2>
+      <h2 class="title">Restoran Favoritmu</h2>
       <section class="restaurant-list" id="favoriteRestaurantList" tabindex="-1"></section>
     `;
   },

@@ -60,7 +60,7 @@ async function handleReviewSubmission(restaurantId) {
         form.insertAdjacentHTML(
           "beforebegin",
           `
-          <div class="success-message">Review submitted successfully!</div>
+          <div class="success-message">Ulasan berhasil dikirim</div>
         `
         );
         setTimeout(() => {
@@ -75,7 +75,7 @@ async function handleReviewSubmission(restaurantId) {
         "beforebegin",
         `
         <div class="error-message">
-          Failed to submit review. Please try again later.
+          Ulasan gagal dikirim, coba lagi!
         </div>
       `
       );

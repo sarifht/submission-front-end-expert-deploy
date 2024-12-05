@@ -4,7 +4,7 @@ import "lazysizes/plugins/parent-fit/ls.parent-fit";
 import "../styles/main.css";
 import App from "./views/app";
 import API_ENDPOINT from "./globals/api-endpoint";
-import FavoriteRestaurantIdb from "./data/favorite-restaurant-idb";
+import FavoriteRestaurantIdb from "./data/favoriteresto-idb";
 
 const loadSW = async () => {
   await import(/* webpackChunkName: "sw-register" */ "./utils/sw-register");
