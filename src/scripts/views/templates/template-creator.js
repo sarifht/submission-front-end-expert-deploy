@@ -20,15 +20,15 @@ const createRestaurantDetailTemplate = (restaurant) => `
     </div>
     <h3 tabindex="0">Menu Makanan</h3>
     <div class="food-menu">
-      ${restaurant.menus.foods.map((food) => `<div class="food-card" tabindex="0"><p>${food.name}</p></div>`).join('')}
+      ${restaurant.menus.foods.map((food) => `<div class="food-card" tabindex="0"><p>${food.name}</p></div>`).join("")}
     </div>
     <h3 tabindex="0">Menu Minuman</h3>
     <div class="drink-menu">
-      ${restaurant.menus.drinks.map((drink) => `<div class="drink-card" tabindex="0"><p>${drink.name}</p></div>`).join('')}
+      ${restaurant.menus.drinks.map((drink) => `<div class="drink-card" tabindex="0"><p>${drink.name}</p></div>`).join("")}
     </div>
     <h3 tabindex="0">Ulasan Pengunjung</h3>
     <div class="review-form">
-      <h4 tabindex="0">Add Your Review</h4>
+      <h4 tabindex="0">Tambahkan Ulasanmu</h4>
       <form id="reviewForm">
         <input type="text" id="reviewName" placeholder="Your Name" required tabindex="0">
         <textarea id="reviewText" placeholder="Your Review" required tabindex="0"></textarea>
@@ -38,16 +38,16 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <div class="carousel">
       <div class="carousel-inner">
         ${restaurant.customerReviews
-    .map(
-      (review) => `
+          .map(
+            (review) => `
           <div class="carousel-item" tabindex="0">
             <p>${review.name}</p>
             <p>${review.review}</p>
             <p>${review.date}</p>
           </div>
         `
-    )
-    .join('')}
+          )
+          .join("")}
       </div>
     </div>
   </div>
