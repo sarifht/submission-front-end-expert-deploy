@@ -1,9 +1,9 @@
-import UrlParser from "../../routes/url-parser";
-import API_ENDPOINT from "../../globals/api-endpoint";
-import { createRestaurantDetailTemplate } from "../../views/templates/template-creator";
+import UrlParser from '../../routes/url-parser';
+import API_ENDPOINT from '../../globals/api-endpoint';
+import { createRestaurantDetailTemplate } from '../../views/templates/template-creator';
 
 function startCarousel() {
-  const carouselInner = document.querySelector(".carousel-inner");
+  const carouselInner = document.querySelector('.carousel-inner');
   let index = 0;
 
   setInterval(() => {
@@ -16,23 +16,23 @@ function startCarousel() {
 }
 
 async function handleReviewSubmission(restaurantId) {
-  const form = document.getElementById("reviewForm");
+  const form = document.getElementById('reviewForm');
   const submitButton = form.querySelector('button[type="submit"]');
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     submitButton.disabled = true;
-    submitButton.textContent = "Submitting...";
+    submitButton.textContent = 'Submitting...';
 
-    const name = document.getElementById("reviewName").value;
-    const review = document.getElementById("reviewText").value;
+    const name = document.getElementById('reviewName').value;
+    const review = document.getElementById('reviewText').value;
 
     try {
       const response = await fetch(API_ENDPOINT.ADD_REVIEW, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           id: restaurantId,
@@ -43,7 +43,7 @@ async function handleReviewSubmission(restaurantId) {
 
       const responseData = await response.json();
       if (!responseData.error) {
-        const carouselInner = document.querySelector(".carousel-inner");
+        const carouselInner = document.querySelector('.carousel-inner');
         carouselInner.innerHTML = responseData.customerReviews
           .map(
             (review) => `
@@ -54,17 +54,17 @@ async function handleReviewSubmission(restaurantId) {
               </div>
             `
           )
-          .join("");
+          .join('');
 
         form.reset();
         form.insertAdjacentHTML(
-          "beforebegin",
+          'beforebegin',
           `
           <div class="success-message">Ulasan berhasil dikirim</div>
         `
         );
         setTimeout(() => {
-          const successMessage = document.querySelector(".success-message");
+          const successMessage = document.querySelector('.success-message');
           if (successMessage) successMessage.remove();
         }, 3000);
       } else {
@@ -72,7 +72,7 @@ async function handleReviewSubmission(restaurantId) {
       }
     } catch (error) {
       form.insertAdjacentHTML(
-        "beforebegin",
+        'beforebegin',
         `
         <div class="error-message">
           Ulasan gagal dikirim, coba lagi!
@@ -80,19 +80,19 @@ async function handleReviewSubmission(restaurantId) {
       `
       );
       setTimeout(() => {
-        const errorMessage = document.querySelector(".error-message");
+        const errorMessage = document.querySelector('.error-message');
         if (errorMessage) errorMessage.remove();
       }, 3000);
-      console.error("Error submitting review:", error);
+      console.error('Error submitting review:', error);
     } finally {
       submitButton.disabled = false;
-      submitButton.textContent = "Submit Review";
+      submitButton.textContent = 'Submit Review';
     }
   });
 }
 
 export async function displayRestaurantDetail(id) {
-  const restaurantDetailContainer = document.querySelector(".restaurant-detail");
+  const restaurantDetailContainer = document.querySelector('.restaurant-detail');
 
   restaurantDetailContainer.innerHTML = `
     <div class="loader-container">
@@ -109,11 +109,11 @@ export async function displayRestaurantDetail(id) {
 
       const { default: FavoriteButtonInitiator } = await import(
         /* webpackChunkName: "favorite-button-initiator" */
-        "../../utils/favorite-button-initiator"
+        '../../utils/favorite-button-initiator'
       );
 
       FavoriteButtonInitiator.init({
-        favoriteButtonContainer: document.querySelector("#favoriteButtonContainer"),
+        favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
         restaurant: {
           id: data.restaurant.id,
           name: data.restaurant.name,
@@ -127,11 +127,11 @@ export async function displayRestaurantDetail(id) {
       startCarousel();
       handleReviewSubmission(id);
 
-      restaurantDetailContainer.removeAttribute("tabindex");
+      restaurantDetailContainer.removeAttribute('tabindex');
     } else {
       restaurantDetailContainer.innerHTML = `
         <div class="error-message">
-          ${data.message || "Failed to load restaurant details"}
+          ${data.message || 'Failed to load restaurant details'}
         </div>
       `;
     }
@@ -155,33 +155,33 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
 
-    const skipToDetailLink = document.getElementById("skipToDetailLink");
-    const skipToContentLink = document.getElementById("skipToContentLink");
-    skipToDetailLink.classList.remove("hide");
-    skipToContentLink.classList.add("hide");
+    const skipToDetailLink = document.getElementById('skipToDetailLink');
+    const skipToContentLink = document.getElementById('skipToContentLink');
+    skipToDetailLink.classList.remove('hide');
+    skipToContentLink.classList.add('hide');
 
-    skipToDetailLink.addEventListener("click", (e) => {
+    skipToDetailLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const restaurantDetail = document.getElementById("restaurantDetail");
-      restaurantDetail.setAttribute("tabindex", "-1");
+      const restaurantDetail = document.getElementById('restaurantDetail');
+      restaurantDetail.setAttribute('tabindex', '-1');
       restaurantDetail.focus();
     });
 
     await displayRestaurantDetail(url.id);
 
-    document.addEventListener("keydown", function handleFirstTab(e) {
-      if (e.key === "Tab") {
+    document.addEventListener('keydown', function handleFirstTab(e) {
+      if (e.key === 'Tab') {
         e.preventDefault();
         skipToDetailLink.focus();
-        document.removeEventListener("keydown", handleFirstTab);
+        document.removeEventListener('keydown', handleFirstTab);
 
         skipToDetailLink.addEventListener(
-          "blur",
+          'blur',
           function handleSkipLinkBlur() {
-            const restaurantDetail = document.getElementById("restaurantDetail");
-            restaurantDetail.setAttribute("tabindex", "-1");
+            const restaurantDetail = document.getElementById('restaurantDetail');
+            restaurantDetail.setAttribute('tabindex', '-1');
             restaurantDetail.focus();
-            skipToDetailLink.removeEventListener("blur", handleSkipLinkBlur);
+            skipToDetailLink.removeEventListener('blur', handleSkipLinkBlur);
           },
           { once: true }
         );

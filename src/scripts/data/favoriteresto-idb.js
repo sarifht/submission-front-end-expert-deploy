@@ -1,12 +1,12 @@
-import { openDB } from "idb";
+import { openDB } from 'idb';
 
-const DATABASE_NAME = "restaurant-database";
+const DATABASE_NAME = 'restaurant-database';
 const DATABASE_VERSION = 1;
-const OBJECT_STORE_NAME = "restaurants";
+const OBJECT_STORE_NAME = 'restaurants';
 
 const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
   upgrade(db) {
-    db.createObjectStore(OBJECT_STORE_NAME, { keyPath: "id" });
+    db.createObjectStore(OBJECT_STORE_NAME, { keyPath: 'id' });
   },
 });
 

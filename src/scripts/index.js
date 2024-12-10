@@ -1,49 +1,49 @@
-import "regenerator-runtime";
-import "lazysizes";
-import "lazysizes/plugins/parent-fit/ls.parent-fit";
-import "../styles/main.css";
-import App from "./views/app";
-import API_ENDPOINT from "./globals/api-endpoint";
-import FavoriteRestaurantIdb from "./data/favoriteresto-idb";
+import 'regenerator-runtime';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import '../styles/main.css';
+import App from './views/app';
+import API_ENDPOINT from './globals/api-endpoint';
+import FavoriteRestaurantIdb from './data/favoriteresto-idb';
 
 const loadSW = async () => {
-  await import(/* webpackChunkName: "sw-register" */ "./utils/sw-register");
+  await import(/* webpackChunkName: "sw-register" */ './utils/sw-register');
 };
 
-const menuButton = document.querySelector(".app-bar__menu");
-const navigation = document.querySelector(".app-bar__navigation");
+const menuButton = document.querySelector('.app-bar__menu');
+const navigation = document.querySelector('.app-bar__navigation');
 
-menuButton.addEventListener("click", () => {
-  navigation.classList.toggle("open");
-  menuButton.classList.toggle("open");
+menuButton.addEventListener('click', () => {
+  navigation.classList.toggle('open');
+  menuButton.classList.toggle('open');
 });
 
-menuButton.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+menuButton.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
     event.preventDefault();
-    navigation.classList.toggle("open");
-    menuButton.classList.toggle("open");
+    navigation.classList.toggle('open');
+    menuButton.classList.toggle('open');
   }
 });
 
-menuButton.addEventListener("keyup", (event) => {
-  if (event.key === " ") {
+menuButton.addEventListener('keyup', (event) => {
+  if (event.key === ' ') {
     event.preventDefault();
-    navigation.classList.toggle("open");
-    menuButton.classList.toggle("open");
+    navigation.classList.toggle('open');
+    menuButton.classList.toggle('open');
   }
 });
 
 function generateStarRating(rating) {
-  const starContainer = document.createElement("div");
-  starContainer.classList.add("rating");
+  const starContainer = document.createElement('div');
+  starContainer.classList.add('rating');
   for (let i = 1; i <= 5; i++) {
-    const star = document.createElement("span");
-    star.classList.add("star");
+    const star = document.createElement('span');
+    star.classList.add('star');
     if (i <= rating) {
-      star.textContent = "★";
+      star.textContent = '★';
     } else {
-      star.textContent = "☆";
+      star.textContent = '☆';
     }
     starContainer.appendChild(star);
   }
@@ -51,12 +51,12 @@ function generateStarRating(rating) {
 }
 
 function createRestaurantItem(restaurant) {
-  const restaurantItem = document.createElement("div");
-  restaurantItem.classList.add("restaurant-item");
-  restaurantItem.setAttribute("data-id", restaurant.id);
-  restaurantItem.tabIndex = "0";
-  restaurantItem.setAttribute("aria-label", `Restaurant ${restaurant.name}`);
-  restaurantItem.style.minHeight = "200px"; // Set a fixed height to avoid layout shifts
+  const restaurantItem = document.createElement('div');
+  restaurantItem.classList.add('restaurant-item');
+  restaurantItem.setAttribute('data-id', restaurant.id);
+  restaurantItem.tabIndex = '0';
+  restaurantItem.setAttribute('aria-label', `Restaurant ${restaurant.name}`);
+  restaurantItem.style.minHeight = '200px'; // Set a fixed height to avoid layout shifts
 
   restaurantItem.innerHTML = `
     <img data-src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" 
@@ -68,7 +68,7 @@ function createRestaurantItem(restaurant) {
     <div class="rating-container" tabindex="0"></div>
     <a href="#/detail/${restaurant.id}" class="cta view-details-btn" tabindex="0">View Details</a>
   `;
-  const ratingContainer = restaurantItem.querySelector(".rating-container");
+  const ratingContainer = restaurantItem.querySelector('.rating-container');
   ratingContainer.appendChild(generateStarRating(restaurant.rating));
   return restaurantItem;
 }
@@ -87,10 +87,10 @@ async function fetchRestaurants() {
 }
 
 export async function displayRestaurants() {
-  const restaurantList = document.querySelector("#restaurantList");
+  const restaurantList = document.querySelector('#restaurantList');
 
   if (!restaurantList) {
-    console.error("Restaurant list element not found");
+    console.error('Restaurant list element not found');
     return;
   }
 
@@ -107,7 +107,7 @@ export async function displayRestaurants() {
     const favoriteIds = favoriteRestaurants.map((restaurant) => restaurant.id);
     const nonFavoriteRestaurants = restaurants.filter((restaurant) => !favoriteIds.includes(restaurant.id));
 
-    restaurantList.innerHTML = "";
+    restaurantList.innerHTML = '';
 
     if (nonFavoriteRestaurants.length === 0) {
       restaurantList.innerHTML = `
@@ -132,22 +132,22 @@ export async function displayRestaurants() {
 }
 
 const app = new App({
-  content: document.querySelector("#main-content"),
+  content: document.querySelector('#main-content'),
 });
 
-document.addEventListener("click", async (event) => {
-  if (event.target.classList.contains("view-details-btn")) {
+document.addEventListener('click', async (event) => {
+  if (event.target.classList.contains('view-details-btn')) {
     event.preventDefault();
-    const url = event.target.getAttribute("href");
+    const url = event.target.getAttribute('href');
     window.location.hash = url;
   }
 });
 
-window.addEventListener("hashchange", async () => {
+window.addEventListener('hashchange', async () => {
   await app.renderPage();
 });
 
-window.addEventListener("load", async () => {
+window.addEventListener('load', async () => {
   await loadSW();
   await app.renderPage();
   if (!window.location.hash) {
@@ -156,22 +156,22 @@ window.addEventListener("load", async () => {
 });
 
 let deferredPrompt;
-window.addEventListener("beforeinstallprompt", (e) => {
+window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  const addBtn = document.createElement("button");
-  addBtn.innerText = "+";
-  addBtn.classList.add("add-to-home-screen");
+  const addBtn = document.createElement('button');
+  addBtn.innerText = '+';
+  addBtn.classList.add('add-to-home-screen');
   document.body.appendChild(addBtn);
 
-  addBtn.addEventListener("click", () => {
-    addBtn.style.display = "none";
+  addBtn.addEventListener('click', () => {
+    addBtn.style.display = 'none';
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the A2HS prompt");
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
       } else {
-        console.log("User dismissed the A2HS prompt");
+        console.log('User dismissed the A2HS prompt');
       }
       deferredPrompt = null;
     });

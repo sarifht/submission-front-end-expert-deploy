@@ -1,5 +1,5 @@
-import UrlParser from "../routes/url-parser";
-import { displayRestaurants } from "../index";
+import UrlParser from '../routes/url-parser';
+import { displayRestaurants } from '../index';
 
 class App {
   constructor({ content }) {
@@ -8,7 +8,7 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = url ? (await import("../routes/routes")).default[url] : null;
+    const page = url ? (await import('../routes/routes')).default[url] : null;
 
     if (!page) {
       displayRestaurants();
