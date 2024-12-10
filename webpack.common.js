@@ -45,10 +45,10 @@ const plugins = [
     mode: "webapp",
     devMode: "webapp",
     favicons: {
-      appName: "Restaurant Apps",
-      appDescription: "Restaurant Catalog Application",
-      developerName: "Ari",
-      developerURL: "https://github.com/arirzwn",
+      appName: "Sarif Resto",
+      appDescription: "Restoran Sarif",
+      developerName: "Sarif",
+      developerURL: "https://github.com/sarifht",
       background: "#ffffff",
       theme_color: "#ffffff",
       icons: {
