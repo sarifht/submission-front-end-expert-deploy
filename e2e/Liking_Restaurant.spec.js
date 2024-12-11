@@ -6,10 +6,24 @@ const assert = require("assert");
 
 Feature("Liking Restaurant");
 
-const EMPTY_MESSAGE = "Tidak ada film untuk ditampilkan";
+const EMPTY_MESSAGE = "Tidak ada restoran untuk ditampilkan";
 
 Before(({ I }) => {
   I.amOnPage("/#/favorite");
+  I.see(EMPTY_MESSAGE, ".restaurant-item__not__found");
+});
+
+After(({ I }) => {
+  I.amOnPage("/#/favorite");
+  I.seeElement(".restaurant-item");
+
+  // Membersihkan daftar favorit setelah pengujian selesai
+  // Asumsi ada tombol atau fitur untuk menghapus semua restoran favorit
+  I.executeScript(() => {
+    const clearButton = document.querySelector("#clearFavoritesButton");
+    if (clearButton) clearButton.click();
+  });
+  I.see(EMPTY_MESSAGE, ".restaurant-item__not__found");
 });
 
 Scenario("showing empty liked restaurant", ({ I }) => {

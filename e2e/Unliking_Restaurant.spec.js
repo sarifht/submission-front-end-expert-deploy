@@ -1,42 +1,47 @@
 /* eslint-disable no-undef */
-const assert = require('assert');
+const assert = require("assert");
 
-Feature('Unliking Restaurant');
+Feature("Unliking Restaurant");
+
+const EMPTY_MESSAGE = "Tidak ada restoran untuk ditampilkan";
+
 Before(({ I }) => {
-  I.amOnPage('/#/favorite');
-});
-Scenario('showing empty liked menu restaurant', ({ I }) => {
-  I.dontSeeElement('.restaurant-item');
+  I.amOnPage("/#/favorite");
+  I.see(EMPTY_MESSAGE, ".restaurant-item__not__found");
 });
 
-Scenario('unliking one restaurant', async ({ I }) => {
-  I.seeElement('.content__heading');
-  I.amOnPage('/');
+Scenario("showing empty liked menu restaurant", ({ I }) => {
+  I.dontSeeElement(".restaurant-item");
+  I.see(EMPTY_MESSAGE, ".restaurant-item__not__found");
+});
 
-  I.waitForElement('.restaurant__name a', 30);
-  I.seeElement('.restaurant__name a');
+Scenario("unliking one restaurant", async ({ I }) => {
+  // Liking a restaurant first
+  I.amOnPage("/");
 
-  const firstRestaurant = locate('.restaurant__name a').first();
+  I.waitForElement(".restaurant__name a", 10);
+  I.seeElement(".restaurant__name a");
+
+  const firstRestaurant = locate(".restaurant__name a").first();
   const firstRestaurantName = await I.grabTextFrom(firstRestaurant);
   I.click(firstRestaurant);
 
-  I.waitForElement('#likeButton', 30);
-  I.seeElement('#likeButton');
-  I.click('#likeButton');
+  I.waitForElement("#likeButton", 10);
+  I.seeElement("#likeButton");
+  I.click("#likeButton");
 
-  I.amOnPage('/#/favorite');
-  I.seeElement('.restaurant-item');
+  I.amOnPage("/#/favorite");
+  I.seeElement(".restaurant-item");
 
-  const unlikedRestaurantName = await I.grabTextFrom('.restaurant__name a');
-  assert.strictEqual(firstRestaurantName, unlikedRestaurantName);
+  const likedRestaurantName = await I.grabTextFrom(".restaurant__name");
+  assert.strictEqual(firstRestaurantName, likedRestaurantName);
 
-  I.seeElement('.restaurant__name a');
-  await I.grabTextFrom(firstRestaurant);
-  I.click(firstRestaurant);
+  // Unliking the restaurant
+  I.click(".restaurant__name a");
+  I.waitForElement("#likeButton", 10);
+  I.seeElement("#likeButton");
+  I.click("#likeButton");
 
-  I.seeElement('#likeButton');
-  I.click('#likeButton');
-
-  I.amOnPage('/#/favorite');
-  I.dontSeeElement('.restaurant-item');
+  I.amOnPage("/#/favorite");
+  I.see(EMPTY_MESSAGE, ".restaurant-item__not__found");
 });
