@@ -1,4 +1,4 @@
-import { createRestaurantItemTemplate } from "../../views/templates/template-creator";
+import { createRestaurantItemTemplate } from '../../views/templates/template-creator';
 
 const Favorite = {
   async render() {
@@ -9,33 +9,33 @@ const Favorite = {
   },
 
   async afterRender() {
-    const FavoriteRestaurantIdb = (await import(/* webpackChunkName: "favoriteresto-idb" */ "../../data/favoriteresto-idb")).default;
+    const FavoriteRestaurantIdb = (await import(/* webpackChunkName: "favoriteresto-idb" */ '../../data/favoriteresto-idb')).default;
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    const favoriteRestaurantList = document.querySelector("#favoriteRestaurantList");
-    const skipLink = document.querySelector("#skipToContentLink");
+    const favoriteRestaurantList = document.querySelector('#favoriteRestaurantList');
+    const skipLink = document.querySelector('#skipToContentLink');
 
     if (!favoriteRestaurantList) {
-      console.error("Favorite restaurant list element not found");
+      console.error('Favorite restaurant list element not found');
       return;
     }
 
     if (skipLink) {
-      skipLink.setAttribute("href", "#favoriteRestaurantList");
+      skipLink.setAttribute('href', '#favoriteRestaurantList');
 
-      skipLink.addEventListener("click", (event) => {
+      skipLink.addEventListener('click', (event) => {
         event.preventDefault();
         favoriteRestaurantList.focus();
-        favoriteRestaurantList.scrollIntoView({ behavior: "smooth" });
+        favoriteRestaurantList.scrollIntoView({ behavior: 'smooth' });
       });
     }
 
     window.addEventListener(
-      "keydown",
+      'keydown',
       function handleFirstTab(e) {
-        if (e.key === "Tab" && !e.shiftKey) {
+        if (e.key === 'Tab' && !e.shiftKey) {
           e.preventDefault();
           skipLink.focus();
-          window.removeEventListener("keydown", handleFirstTab);
+          window.removeEventListener('keydown', handleFirstTab);
         }
       },
       { once: true }
@@ -49,19 +49,19 @@ const Favorite = {
       `;
     } else {
       restaurants.forEach((restaurant) => {
-        const restaurantItem = document.createElement("div");
+        const restaurantItem = document.createElement('div');
         restaurantItem.innerHTML = createRestaurantItemTemplate(restaurant);
         const container = restaurantItem.firstElementChild;
-        container.setAttribute("tabindex", "0");
+        container.setAttribute('tabindex', '0');
         favoriteRestaurantList.appendChild(container);
       });
     }
 
-    const firstRestaurantItem = favoriteRestaurantList.querySelector(".restaurant-item");
+    const firstRestaurantItem = favoriteRestaurantList.querySelector('.restaurant-item');
     if (firstRestaurantItem) {
       firstRestaurantItem.focus();
     } else {
-      const emptyMessage = favoriteRestaurantList.querySelector(".empty-favorite-message");
+      const emptyMessage = favoriteRestaurantList.querySelector('.empty-favorite-message');
       if (emptyMessage) {
         emptyMessage.focus();
       }
