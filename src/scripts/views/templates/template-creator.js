@@ -28,7 +28,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
     </div>
     <h3 tabindex="0">Ulasan Pengunjung</h3>
     <div class="review-form">
-      <h4 tabindex="0">Tambahkan Ulasanmu</h4>
+      <h4 tabindex="0">Tambahkan Ulasanmu.</h4>
       <form id="reviewForm">
         <input type="text" id="reviewName" placeholder="Your Name" required tabindex="0">
         <textarea id="reviewText" placeholder="Your Review" required tabindex="0"></textarea>

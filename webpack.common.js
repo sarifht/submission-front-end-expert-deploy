@@ -9,6 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const plugins = [
+  new BundleAnalyzerPlugin(),
   new CleanWebpackPlugin({
     cleanOnceBeforeBuildPatterns: ["**/*", "!images/**", "!images/heros/**"], // Exclude images/heros directory
   }),
@@ -120,11 +121,12 @@ const plugins = [
       },
     ],
   }),
+  new BundleAnalyzerPlugin(),
 ];
 
-if (process.env.ANALYZE === "true") {
-  plugins.push(new BundleAnalyzerPlugin());
-}
+// if (process.env.ANALYZE === "true") {
+//   plugins.push(new BundleAnalyzerPlugin());
+// }
 
 module.exports = {
   entry: {
